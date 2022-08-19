@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
+    protected $table = 'students';
+    protected $fillable = ['first_name','last_name','email','location'];
+    protected $hidden = [
+        'password',
+
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

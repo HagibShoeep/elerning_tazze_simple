@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SpecializationSession extends Model
 {
     use HasFactory;
+    protected $table = 'specialization_sessions';
+    protected $fillable = ['name','detail','specialization_id'];
+
 }
