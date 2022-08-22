@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCourseRequest;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -12,9 +14,16 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        //
+        // api information json responses Course
+
+
+
+
+
     }
 
     /**
@@ -24,7 +33,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+
+        //insert to database with json api
+
     }
 
     /**
@@ -33,7 +44,7 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCourseRequest $request)
     {
         //
     }
@@ -80,6 +91,11 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+     $course=   Course::findOrFail($id);
+
+        return response()->json([
+            'status' => true,
+            'message' => "course Deleted successfully!",
+        ], 200);
     }
 }

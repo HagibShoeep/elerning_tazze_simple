@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('spitialization_created_bies', function (Blueprint $table) {
             $table->id();
-           $table->foreignId('instaititution_id')->constrained('instaititutions');
-        $table->foreignId('course_id')->constrained('spitialization_details');
+            $table->foreignId('instaititution_id')->constrained('instaititutions');
+            $table->foreignId('course_id')->constrained('spitialization_details');
             $table->timestamps();
         });
     }

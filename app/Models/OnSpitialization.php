@@ -11,4 +11,10 @@ class OnSpitialization extends Model
     protected $table = 'on_spitializations';
     protected $fillable = ['lecturer_id','course_id'];
 
+    public function course() {
+        return $this->hasMany(App\Model\Course::class,'foreign_key', 'local_key');
+    }
+    public function lecturers() {
+        return $this->hasMany(App\Model\Lecturer::class,'foreign_key', 'local_key');
+    }
 }

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('statuses_id')->constrained('statuses');
             $table->text('cirtifcate_id');
             $table->text('cirtifcate_location');
-
             $table->timestamps();
         });
     }

@@ -10,5 +10,10 @@ class SpitializationCreatedBy extends Model
     use HasFactory;
     protected $table = 'spitialization_created_bies';
     protected $fillable = ['instaititution_id','course_id'];
-
+    public function instaititution() {
+        return $this->hasMany(App\Model\Instaititution::class, 'foreign_key', 'local_key');
+    }
+    public function course() {
+        return $this->hasMany(App\Model\Course::class,'foreign_key', 'local_key');
+    }
 }

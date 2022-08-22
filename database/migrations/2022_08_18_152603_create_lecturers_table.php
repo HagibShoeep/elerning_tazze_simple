@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('lecturers', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('title');
+            $table->foreignId('institution_id')->constrained('instaititutions');
             $table->timestamps();
         });
     }

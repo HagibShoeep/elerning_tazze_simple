@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('on_spitializations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('lecturer_id')->constrained('lecturers');
-          $table->foreignId('course_id')->constrained('spitialization_details');
+            $table->foreignId('course_id')->constrained('spitialization_details');
             $table->timestamps();
         });
     }

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreStudentRequest;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -14,7 +15,14 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+
+        $Students = Student::all();
+
+        return response()->json([
+            'status' => true,
+            'students' => $Students
+        ]);      //show the Student json api
+
     }
 
     /**
@@ -33,9 +41,17 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStudentRequest $request)
     {
         //
+
+        $students = Student::create($request->all());
+
+        return response()->json([
+            'status' => true,
+            'message'=>"insert successfull chapters",
+            'students' => $students
+        ], 200);
     }
 
     /**
@@ -67,10 +83,22 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreStudentRequest $request, $id)
     {
-        //
-    }
+        $students = Student::find($id);
+        $students->first_name = $request['first_name'];
+        $students->last_name =  $request['last_name'];
+        $students->email = $request['email'];
+        $students->location =  $request['location'];
+
+        $students->save();
+        return response()->json([
+            "success" => true,
+            "message" => "chapters updated successfully.",
+            "data" => $students
+        ]);    }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +108,13 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $students = Student::find($id);
+        $students->delete();
+        return response()->json([
+            'status' => true,
+            'message' => "emploee Deleted successfully!",
+        ], 200);
+
     }
 }
