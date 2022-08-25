@@ -30,6 +30,12 @@ Route::group([
             Route::put('/update-students/{id}', 'StudentController@update');
             Route::delete('/delete-students/{id}', 'StudentController@destroy');
         });
+        Route::prefix('status')->group(function () {
+            Route::get('/statuies', 'StatusController@index');
+            Route::post('/add-status', 'StatusController@store');
+            Route::put('/update-status/{id}', 'StatusController@update');
+            Route::delete('/delete-status/{id}', 'StatusController@destroy');
+        });
 
 
     });

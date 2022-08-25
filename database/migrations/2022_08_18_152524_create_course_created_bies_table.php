@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('course_created_bies', function (Blueprint $table) {
             $table->id();
-           $table->foreignId('instaititution_id')->constrained('instaititutions');
-            $table->foreignId('course_id')->constrained('course_details');
+            $table->foreignId('instaititution_id')->constrained('instaititutions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('course_id')->constrained('course_details')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

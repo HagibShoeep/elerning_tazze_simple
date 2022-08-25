@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('chapter_id')->constrained('chapters');
-            $table->foreignId('material_type_id')->constrained('material_types');
+            $table->foreignId('chapter_id');
+            $table->foreignId('material_type_id')->constrained('material_types') ;
             $table->boolean('mondetrery');
             $table->integer('maxpoints');
             $table->string('materialLink');

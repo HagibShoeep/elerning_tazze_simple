@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudentRequest;
 use App\Models\Student;
-
+use Illuminate\Http\Request;
 class StudentController extends Controller
 {
     /**
@@ -90,11 +90,11 @@ class StudentController extends Controller
         $students->last_name =  $request['last_name'];
         $students->email = $request['email'];
         $students->location =  $request['location'];
-
+        $students->password =  $request['password'];
         $students->save();
         return response()->json([
             "success" => true,
-            "message" => "chapters updated successfully.",
+            "message" => "students updated successfully.",
             "data" => $students
         ]);    }
 

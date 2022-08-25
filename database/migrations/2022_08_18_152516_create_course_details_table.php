@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('commetment');
-          $table->foreignId('spitialization_id')->constrained('spitialization_details');
+            $table->foreignId('spitialization_id')->constrained('spitialization_details')->onUpdate('cascade')->onDelete('cascade');
             $table->text('description');
             $table->decimal('min_grade', $precision = 5, $scale = 2);
             $table->decimal('course_price', $precision = 8, $scale = 2);

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreStatueslRequest;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
@@ -14,7 +16,12 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $status = Status::all();
+
+        return response()->json([
+            'status' => true,
+            'status' => $status
+        ]);
     }
 
     /**
@@ -33,9 +40,15 @@ class StatusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStatueslRequest $request)
     {
-        //
+        $status = Status::create($request->all());
+
+        return response()->json([
+            'status' => true,
+            'message'=>"insert successfull status",
+            'status' => $status
+        ], 200);
     }
 
     /**
@@ -67,9 +80,17 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreStatueslRequest $request, $id)
     {
-        //
+        $status = Status::find($id);
+        $status->status_name = $request['status_name'];
+
+        $status->save();
+        return response()->json([
+        "success" => true,
+        "message" => "status updated successfully.",
+        "data" => $status
+        ]);
     }
 
     /**
@@ -80,6 +101,12 @@ class StatusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $status = Status::find($id);
+        $status->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => "status Deleted successfully!",
+        ], 200);
     }
 }

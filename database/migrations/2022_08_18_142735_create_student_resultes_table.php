@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('student_resultes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained('students');
-            $table->foreignId('material_id')->constrained('materials');
+            $table->foreignId('student_id')->constrained('students')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('material_id')->constrained('materials')->onUpdate('cascade') ->onDelete('cascade');
             $table->integer('itempt');
             $table->text('itempt_link');
             $table->decimal('score', $precision = 8, $scale = 2);

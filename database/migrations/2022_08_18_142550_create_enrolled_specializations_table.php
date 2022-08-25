@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('enrolled_specializations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained('students');
-            $table->foreignId('specialization_session_id')->constrained('specialization_sessions');
+            $table->foreignId('student_id')->constrained('students')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('specialization_session_id')->constrained('specialization_sessions')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('statuses_id')->constrained('statuses');
             $table->text('cirtifcate_id');
             $table->text('cirtifcate_location');

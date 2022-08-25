@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->dateTimeTz('start_at', $precision = 0);
             $table->dateTimeTz('end_at', $precision = 0);
-            $table->foreignId('course_id')->constrained('courses');
-            $table->foreignId('specialization_session_id')->constrained('specialization_sessions');
+            $table->foreignId('course_id')->constrained('courses')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('specialization_session_id')->constrained('specialization_sessions')->onUpdate('cascade')->onDelete('cascade');
             $table->decimal('final_grade', $precision = 8, $scale = 2);
             $table->text('cirtifcate_id');
             $table->text('cirtifcate_location');

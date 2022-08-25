@@ -9,10 +9,9 @@ class Student extends Model
 {
     use HasFactory;
     protected $table = 'students';
-    protected $fillable = ['first_name','last_name','email','location'];
+    protected $fillable = ['first_name','last_name','email','location','password'];
     protected $hidden = [
         'password',
-
     ];
     protected $casts = [
         'email_verified_at' => 'datetime',
